@@ -1,7 +1,7 @@
 import React from 'react'
 import "../../css/MovieModal.css"
 
-export default function MovieModal({ backdrop_path, title, overview, name, release_date, first_air_date, vote_average, setModalOpen,}) 
+export default function MovieModal({ backdrop_path, title, overview, name, release_date, first_air_date, vote_average, setModalOpen}) 
 {
   return (
     <div className='presentation'>
