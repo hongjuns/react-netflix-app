@@ -34,9 +34,7 @@ export default function SearchPage() {
     return searchResults.length > 0 ? (
       <section className="search-container">
        {searchResults.map((movie) => {
-      
-         return (<Movies movie={movie} key={movie.id}/>)
-          
+         return (<Movies movie={movie} key={movie.id} movieKey={movie.id}/>)
         })}
      </section>
     ) : (
