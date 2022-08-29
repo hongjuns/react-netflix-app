@@ -22,7 +22,7 @@ export default function Nav() {
     },[]);
 
     const handleReplace = () => {
-        window.location.reload();
+        navigate("/");
     }
 
     const handleChangeSearch = (e) => {
