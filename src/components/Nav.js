@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation } from "react-router-dom";
 import "../css/Nav.css"
 
 export default function Nav() {
     const [show , setShow] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
+    const useLocationParm = useLocation();
 
     useEffect(() => {
         window.addEventListener("scroll",() => {
@@ -22,7 +23,11 @@ export default function Nav() {
     },[]);
 
     const handleReplace = () => {
-        navigate("/");
+        if (useLocationParm.pathname == "/"){
+            window.location.reload();
+        }else {
+            navigate("/");
+        }
     }
 
     const handleChangeSearch = (e) => {

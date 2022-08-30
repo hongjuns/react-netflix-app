@@ -1,12 +1,23 @@
-import React from 'react'
+import React , { useRef, useEffect }  from 'react'
 import "../../css/MovieModal.css"
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 export default function MovieModal({ backdrop_path, title, overview, name, release_date, first_air_date, vote_average, setModalOpen}) 
 {
+  const ref = useRef();
+  
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    }
+  }, [])
+  
+  useOnClickOutside(ref, () => {setModalOpen(false)});
   return (
     <div className='presentation'>
       <div className='wrapper-modal'>
-        <div className='modal'>
+        <div className='modal' ref={ref}>
           <span onClick={() => setModalOpen(false)} className="modal-close">
               X
           </span>
