@@ -10,7 +10,6 @@ export default function Nav() {
 
     useEffect(() => {
         window.addEventListener("scroll",() => {
-            console.log("window.scrollY", window.scrollY);
             if (window.scrollY > 50) {
               setShow(true);
             } else {
@@ -23,9 +22,11 @@ export default function Nav() {
     },[]);
 
     const handleReplace = () => {
-        if (useLocationParm.pathname == "/"){
+        if (useLocationParm.pathname === "/"){
+            setSearchValue("");
             window.location.reload();
         }else {
+            setSearchValue("");
             navigate("/");
         }
     }

@@ -21,7 +21,6 @@ export default function SearchPage() {
   },[searchTerm]);
 
   const fetchSearchMovie = async (searchTerm) => {
-    console.log("searchTerm :" + searchTerm);
     try{
       const request = await customAxios.get(
         `/search/multi?include_adult=false&query=${searchTerm}`
