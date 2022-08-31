@@ -133,6 +133,7 @@
   }
   
   .swiper-pagination {
+    display: none;
     text-align: right !important;
   }
   
