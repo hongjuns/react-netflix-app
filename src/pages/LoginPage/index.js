@@ -2,7 +2,8 @@ import React ,{ useState } from 'react'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setToken } from '../../reducer/authSlice';
-import "../../css/Login.css"
+import "../../css/Login.css";
+import Swal from "sweetalert2";
 export default function Login() {
 
   const navigate = useNavigate();
@@ -22,13 +23,23 @@ export default function Login() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     
-    let body = {
-      id: email,
-      pw: password,
-      token : Date.now()
+    if(email === "admin@velog" && password === "admin"){
+      let body = {
+        id: email,
+        pw: password,
+      }
+      dispatch(setToken(body));
+      navigate("/");
+    }else {
+      Swal.fire({
+        icon: 'error',
+        title: 'error',
+        text: '회원정보가 없습니다.',
+      })
+      setEmail('');
+      setPassword('');
     }
-    dispatch(setToken(body));
-    navigate("/");
+    
   }
 
   return (

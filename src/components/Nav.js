@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate , useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "../css/Nav.css"
 
 export default function Nav() {
@@ -7,6 +8,7 @@ export default function Nav() {
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
     const useLocationParm = useLocation();
+    const isLogined = useSelector(state => state.auth.isLogined);
 
     useEffect(() => {
         window.addEventListener("scroll",() => {
@@ -44,11 +46,11 @@ export default function Nav() {
              className="navLogo"
              onClick={handleReplace}
         />
-
+        
         <input 
             value={searchValue}
             onChange={handleChangeSearch} 
-            className={`navInput ${show ? "navInputWhite" : ""} `}
+            className={`navInput ${show ? "navInputWhite" : ""} ${!isLogined ? "hide" : ""} `}
             type="text"
             placeholder="영화를검색해주세요 "
         />
@@ -56,7 +58,7 @@ export default function Nav() {
         <img
         alt="User logged"
         src="https://occ-0-4796-988.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
-        className="navAvatar"
+        className={`navAvatar ${!isLogined ? "hide" : ""}`}
         />
     </nav>
   );

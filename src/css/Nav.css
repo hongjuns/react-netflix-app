@@ -16,6 +16,9 @@
     background-color: #111;
 }
 
+.hide {
+    display: none;
+}
 
 .navLogo {
     position: fixed;
